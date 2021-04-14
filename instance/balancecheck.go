@@ -24,9 +24,7 @@ func (in *Instance) makebalancerequest(balance string) {
 	if in.Features.BalanceCheck.Enable {
 		var id, token = in.Features.BalanceCheck.WebhookID, in.Features.BalanceCheck.WebhookToken
 		wa, err := discordhook.NewWebhookAPI(id, token, true, nil)
-		if err!= nil {
-			panic(err)
-		}
+
 		msg, err := wa.Execute(nil, &discordhook.WebhookExecuteParams {
 			Username: in.Client.User.Username,
 			Embeds: []*discordhook.Embed{
@@ -37,8 +35,8 @@ func (in *Instance) makebalancerequest(balance string) {
 				},
 			},
 		}, nil, "")
-
-		fmt.Println(msg.ID)
+		_ = msg
+		_ = err
 	}
 }
 
@@ -46,9 +44,7 @@ func (in *Instance) makeincomerequest(income string) {
 	if in.Features.BalanceCheck.Enable {
 		var id, token = in.Features.BalanceCheck.WebhookID, in.Features.BalanceCheck.WebhookToken
 		wa, err := discordhook.NewWebhookAPI(id, token, true, nil)
-		if err!= nil {
-			panic(err)
-		}
+		_ = err
 
 		msg, err := wa.Execute(nil, &discordhook.WebhookExecuteParams {
 			Username: in.Client.User.Username,
@@ -60,7 +56,8 @@ func (in *Instance) makeincomerequest(income string) {
 				},
 			},
 		}, nil, "")
-		fmt.Println(msg.ID)
+		_ = msg
+		_ = err
 	}
 }
 
@@ -122,4 +119,3 @@ func (in *Instance) updateBalance(balance int) {
 		numFmt.Sprintf("%d", hourlyInc),
 	)
 }
-
