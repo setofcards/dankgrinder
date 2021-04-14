@@ -345,6 +345,8 @@ features:
   balance_check:
     enable: true
     interval: 180
+    webhookid: 0
+    webhooktoken: ""
   log_to_file: true
   verbose_log_to_stdout: false
   debug: false
@@ -393,3 +395,4 @@ suspicion_avoidance:
   message_delay:
     base: 100
     variation: 400
+
