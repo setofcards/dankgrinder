@@ -11,6 +11,7 @@ import (
 	"os"
 
 	"gopkg.in/yaml.v3"
+	"github.com/andersfylling/snowflake"
 )
 
 const (
@@ -93,6 +94,8 @@ type Features struct {
 type BalanceCheck struct {
 	Enable   bool `yaml:"enable"`
 	Interval int  `yaml:"interval"`
+	WebhookID snowflake.Snowflake `yaml:"webhookid`
+	WebhookToken string  `yaml:"webhooktoken"`
 }
 
 type AutoTidepod struct {
@@ -255,3 +258,4 @@ func Load(path string) (Config, error) {
 
 	return cfg, nil
 }
+
